@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <!-- Styles -->
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+{#    <!-- JS -->#}
+{#    <script src="js/jquery.js"></script>#}
+{#    <script src="js/jquery.nivo.slider.pack.js"></script>#}
+{#    <script src="js/main.js"></script>#}
+{#    <!--[if lt IE 9]>#}
+{#    <script type="text/javascript" src="js/html5.js"></script>#}
+    <![endif]-->
+</head>
+
+<body>
+<header>
+
+<div class="nav-collapse">
+    <h1><a href="/">Shop</a></h1>
+    <nav>
+        {% with total_items=cart|length %}
+            <a href="/cart">{% if cart|length > 0 %}
+            Ваша корзина:{{ total_items }} тов. {{ cart.get_total_price }} руб.
+            {% else %}Корзина пустая{% endif %}</a>
+        {% endwith %}
+{#        <a>#}
+{#           <ul class="menu">#}
+{#               <li class="menu-item">#}
+{#                  <a href="#">Пункт меню 1</a>#}
+{#                  <ul class="sub-menu">#}
+{#                     <li>#}
+{#                        <a href="#">Подпункт меню 1</a>#}
+{#                     </li>#}
+{#                     <li>#}
+{#                        <a href="#">Подпункт меню 2</a>#}
+{#                     </li>#}
+{#                  <li>#}
+{#                        <a href="#">Подпункт меню 3</a>#}
+{#                     </li>>#}
+{#                  </ul>#}
+{#               </li>#}
+{#               <li class="menu-item">#}
+{#                  <a href="#">Пункт меню 2</a>#}
+{#                  <ul class="sub-menu">#}
+{#                     <li>#}
+{#                        <a href="#">Подпункт меню 1</a>#}
+{#                     </li>#}
+{#                     <li>#}
+{#                        <a href="#">Подпункт меню 2</a>#}
+{#                     </li>#}
+{#                  </ul>#}
+{#               </li>#}
+{#            </ul>#}
+{#        </a>#}
+    </nav>
+</div>
+
+</header>
+
+
+    <div id="sidebar">
+        {% block sidebar %} {% endblock %}
+    </div>
+    <div id="content">
+            {% block content %}{% endblock %}
+    </div>
+    <div id="footer">
+        &copy; Belinsky Dev
+    </div>
+
+</body>
+</html>

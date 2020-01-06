@@ -1,0 +1,72 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+  {% if upcategory %} {{ upcategory.name }} {% else %} Страница товаров {% endif %}
+{% endblock %}
+{% block sidebar %}
+    <div id="sidebar">
+    <h3>Категории</h3>
+        <ul>
+            <li {% if not upcategory %} class="selected" {% endif %}>
+                <a href="{% url "shop:UpCategoryList" %}">Все</a>
+            </li>
+
+            {% for cat in upcategorys %}
+
+                <li {% if upcategory_slug == cat.slug %} class="selected" {% endif %}>
+                    <a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+                        <ul>
+
+{#                            <li  {% if not category %} class="selected" {% endif %}>#}
+{#                                <a href="{% url "shop:ProductList" %}">All</a>#}
+{#                            </li>#}
+
+{#                            {% for cat in categories %}#}
+{#                                <li {% if category_slug == cat.slag %} class="selected" {% endif %}>#}
+{#                                    <a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>#}
+{#                                </li>#}
+{#                            {% endfor %}#}
+
+                        </ul>
+                </li>
+
+            {% endfor %}
+
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1>{% if upcategory %}{{ upcategory.name }}<h1>
+{#        {% for upcategory in upcategorys %}#}
+{#            <a href="{{ upcategorys.get_absolute_url }}">#}
+{#            <h1>{% if category %}{{ category.name }}{% else %}Товары{% endif %}</h1>#}
+{#                {% for category in categories %}#}
+{#                    <a href="{{ categories.get_absolute_url }}"></a>#}
+{#                        {% for product in products %}#}
+{#                            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no-image.jpg"%}{% endif %}" class="img-responsive">#}
+{#                        </a>#}
+{#                            <a href="{{ product.get_absolute_url }}">{{ product.name }}#}
+{#                        </a>#}
+{#                        {{ product.price }} руб.#}
+{#                        {% endfor %}#}
+{#                {% endfor %}#}
+{#        {% endfor %}#}
+            <nav>
+                <li>
+                    <ul>
+                        {% for category in categories %}
+                            <ul><a href="{% url "shop:ProductListByCategory" %}" >{{ category.name }}</a></ul>
+
+
+                        {% endfor %}
+                    </ul>
+                </li>
+            </nav>
+        {% else %}Товары{% endif %}
+    </div>
+{% endblock %}
+
+</code>
+</pre>
