@@ -12,7 +12,7 @@ cffi==1.13.2
 chardet==3.0.4
 cssselect2==0.2.2
 defusedxml==0.6.0
-Django==3.0
+Django==3.1.6
 django-paypal==1.0.0
 flower==0.9.3
 html5lib==1.0.1
